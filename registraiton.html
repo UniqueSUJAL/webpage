@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <script>
+        function validateForm() {
+            // Get form input values
+            var studentName = document.getElementById("studentName").value;
+            var vtuNumber = document.getElementById("vtuNumber").value;
+            var department = document.getElementById("department").value;
+            var year = document.getElementById("year").value;
+            var mobileNumber = document.getElementById("mobileNumber").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Regular expressions for email and password validation
+            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+            // Flag to track validation status
+            var isValid = true;
+
+            // Check VTU number
+            if (vtuNumber.length !== 5) {
+                alert("VTU Number must be 5 digits.");
+                isValid = false;
+            }
+
+            // Check if name, department, and year are empty
+            if (studentName === "" || department === "" || year === "") {
+                alert("Please fill in all required fields.");
+                isValid = false;
+            }
+
+            // Check mobile number
+            if (mobileNumber.length !== 10) {
+                alert("Mobile number must be 10 digits.");
+                isValid = false;
+            }
+
+            // Check email format
+            if (!emailRegex.test(email)) {
+                alert("Invalid email address.");
+                isValid = false;
+            }
+
+            // Check password format
+            if (!passwordRegex.test(password)) {
+                alert("Password must contain at least one digit, one lowercase letter, one uppercase letter, and be at least 6 characters long.");
+                isValid = false;
+            }
+
+            // If all validations passed, submit the form
+            if (isValid) {
+                alert("Registration successful!");
+                return true;
+            }
+
+            // Prevent form submission if validation failed
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <h1>Student Registration Form</h1>
+    <form onsubmit="return validateForm()">
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" name="studentName" required><br><br>
+
+        <label for="vtuNumber">VTU Number:</label>
+        <input type="text" id="vtuNumber" name="vtuNumber" required><br><br>
+
+        <label for="department">Department:</label>
+        <input type="text" id="department" name="department" required><br><br>
+
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year" required><br><br>
+
+        <label for="mobileNumber">Student Mobile Number:</label>
+        <input type="text" id="mobileNumber" name="mobileNumber" required><br><br>
+
+        <label for="email">E-mail ID:</label>
+        <input type="text" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>

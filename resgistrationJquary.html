@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+</head>
+<body>
+    <h1>Student Registration Form</h1>
+    <form id="registrationForm">
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" name="studentName" required><br><br>
+
+        <label for="vtuNumber">VTU Number:</label>
+        <input type="number" id="vtuNumber" name="vtuNumber" required><br><br>
+
+        <label for="department">Department:</label>
+        <input type="text" id="department" name="department" required><br><br>
+
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year" required><br><br>
+
+        <label for="mobileNumber">Student Mobile Number:</label>
+        <input type="number" id="mobileNumber" name="mobileNumber" required><br><br>
+
+        <label for="email">E-mail ID:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+
+    <!-- Display area for parsed information -->
+    <div id="parsedInfo"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#registrationForm").submit(function (event) {
+                event.preventDefault(); // Prevent form submission
+
+                // Get form input values using jQuery
+                var studentName = $("#studentName").val();
+                var vtuNumber = $("#vtuNumber").val();
+                var department = $("#department").val();
+                var year = $("#year").val();
+                var mobileNumber = $("#mobileNumber").val();
+                var email = $("#email").val();
+                var password = $("#password").val();
+
+                // Display the parsed information
+                var parsedInfo = `
+                    Student Name: ${studentName}<br>
+                    VTU Number: ${vtuNumber}<br>
+                    Department: ${department}<br>
+                    Year: ${year}<br>
+                    Mobile Number: ${mobileNumber}<br>
+                    E-mail ID: ${email}<br>
+                    Password: ${password}<br>
+                `;
+
+                $("#parsedInfo").html(parsedInfo);
+            });
+        });
+    </script>
+</body>
+</html>

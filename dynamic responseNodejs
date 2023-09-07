@@ -1,0 +1,24 @@
+// Import the required modules
+const http = require('http');
+
+// Create an HTTP server
+const server = http.createServer((req, res) => {
+  // Set the response header with a status code and content type
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+
+  // Generate a dynamic response
+  const currentTime = new Date().toLocaleTimeString();
+  const responseText = `<html><body><h1>Hello, Mr. Praba!</h1><p>Current time: ${currentTime}</p></body></html>`;
+
+  // Send the response to the client
+  res.end(responseText);
+});
+
+// Specify the port and IP address for the server to listen on
+const port = 3000;
+const hostname = '127.0.0.1';
+
+// Start the server and listen on the specified port and IP address
+server.listen(port, hostname, () => {
+  console.log(`Server is running at http://${hostname}:${port}/`);
+});
